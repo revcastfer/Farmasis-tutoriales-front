@@ -2,7 +2,7 @@
 import  React from 'react';
 import Login from './components/Login.jsx'
 import Home from './components/Home.jsx'
-import {Routes,Route,Link } from 'react-router-dom'
+import {Routes,Route } from 'react-router-dom'
 import Tutoriales from './components/Tutoriales.jsx'
 import Referidos from './components/referidos.jsx'
 import Upload from './components/uploadVideo.jsx'
