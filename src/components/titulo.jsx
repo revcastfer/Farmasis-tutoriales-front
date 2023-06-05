@@ -2,6 +2,7 @@ import {useDispatch} from 'react-redux';
 import {selectVideo} from './redux/actions';
 import {useState} from "react";
 import styled from "styled-components";
+import axios from 'axios'
 
 
 //videos debajo titulo a menos de 900px
@@ -51,6 +52,7 @@ let nameObjs=[];
 for (let obj in props.objeto){nameObjs.push(props.objeto[obj].name)};
 
 
+
 let search=(titulo)=>{
 for (let obj in props.objeto){if(props.objeto[obj].name===titulo ){
 	return props.objeto[obj]}
@@ -83,7 +85,7 @@ let onPlayVideo=(e)=>{
 
 			<MenuStyle id={name} className="null" onClick={()=>handleClick(name)} > {name} </MenuStyle>
 			<MenuStyle2 id={name} className="null" > {name} </MenuStyle2>
-			<VideoDiv> <video id={"Video"+name} onPlay={onPlayVideo} style={ {height:"48vh",width:"85vw"}} controls="controls" src={"http://localhost:3002"+search(name).video}/></VideoDiv> 
+			<VideoDiv> <video id={"Video"+name} onPlay={onPlayVideo} style={ {height:"48vh",width:"85vw"}} controls="controls" src={axios.defaults.baseURL+search(name).video}/></VideoDiv> 
 
 			</div>  )  }
 	   </div>)

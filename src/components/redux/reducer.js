@@ -1,3 +1,4 @@
+import axios from 'axios'
 
 let localIsLogin=window.localStorage.getItem("isloguin");
 let localUser=window.localStorage.getItem("usuario");
@@ -23,7 +24,7 @@ export default function reducer(state= initialState,action){
 	   case 'select':
 	   	    return{...state,titulo:action.payload.name,
 	   	          descripcion:action.payload.descrip,
-	   	                          url:"http://localhost:3002"+action.payload.video}
+	   	                          url:axios.defaults.baseURL+action.payload.video}
 
 
 

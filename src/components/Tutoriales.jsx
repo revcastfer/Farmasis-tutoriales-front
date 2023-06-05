@@ -58,7 +58,7 @@ const navigate=useNavigate()
 React.useEffect(()=>{        
 if(isLogin==="false"||isLogin===false) {navigate("/")};
 if(isLogin!=="true"){navigate("./")};
-axios("/farmasistutorials")
+axios("farmasistutorials")
 .then(datos=>datos.data)
 .then(datos=>setData(datos));
   
