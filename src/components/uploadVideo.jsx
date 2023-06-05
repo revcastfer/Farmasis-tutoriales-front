@@ -40,11 +40,11 @@ setValidacion({...validacion,[etiqueta.id]:true}) }
 let readyForSend=()=>{
 	switch(validacion.categoria){
 case true:
-	if(validacion.nombre&&validacion.descripcion&&validacion.video)	{return true} else {return false};
-	break;
+	if(validacion.nombre&&validacion.descripcion&&validacion.video)	{return true} else return false;
+	
 case false:
-	if(validacion.nombre&&validacion.descripcion&&validacion.nuevaCategoria){return true} else {return false};
-	break;
+	if(validacion.nombre&&validacion.descripcion&&validacion.nuevaCategoria){return true} else return false;
+	
 default: return false
 	}
 };
