@@ -75,7 +75,14 @@ export default function Login(){
 const navigate=useNavigate()
 let dispatch=useDispatch();
 let usuario="";
+
 let isLogin=useSelector(state=>state.isloguin);
+
+React.useEffect(()=>{ if(isLogin===true||isLogin==="true" ){ navigate("./Home/Tutoriales")}},)
+
+
+
+
 
 window.onload=function(){usuario=document.querySelector("#usuario").value};
 
