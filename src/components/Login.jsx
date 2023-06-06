@@ -78,7 +78,7 @@ let usuario="";
 
 let isLogin=useSelector(state=>state.isloguin);
 
-React.useEffect(()=>{ if(isLogin===true||isLogin==="true" ){ navigate("./Home/Tutoriales")}},[isLogin])
+React.useEffect(()=>{ if(isLogin===true||isLogin==="true" ){ navigate("./Home/Tutoriales")}},[isLogin,navigate])
 
 
 

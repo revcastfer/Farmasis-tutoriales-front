@@ -62,7 +62,7 @@ axios("farmasistutorials")
 .then(datos=>datos.data)
 .then(datos=>setData(datos));
   
-},[ isLogin])
+},[ isLogin,navigate])
 
 let init=async()=>{await data; dispatch(selectVideo(data[0].basico[0]))};
 init();
