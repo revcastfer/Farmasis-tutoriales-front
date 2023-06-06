@@ -14,7 +14,7 @@ export default function Categoria(props){
 
 return(
 
-<IndiceStyle style={{overflowY:"scroll",height:"80vh",width:"100%"}}>{props.data.map( grupo=><Lista  lista={grupo} /> )}</IndiceStyle>
+<IndiceStyle style={{overflowY:"scroll",height:"80vh",width:"100%"}}>{props.data.map( grupo=><Lista lista={grupo} /> )}</IndiceStyle>
 
 	)
 
