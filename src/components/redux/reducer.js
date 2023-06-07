@@ -3,6 +3,9 @@ import axios from 'axios'
 let localIsLogin=window.localStorage.getItem("isloguin");
 let localUser=window.localStorage.getItem("usuario");
 
+
+
+
 const initialState= {isloguin:localIsLogin,usuario:localUser,titulo:"",
 descripcion:"",url:""}; 
 
