@@ -1,14 +1,18 @@
 import {useState,useEffect} from "react"
 import axios from "axios"
 import {ImputsReferidos,Formulario,ButonStyle,ErrorValidacion} from "./referidos.jsx"
+import {useSelector} from 'react-redux';
+import {useNavigate} from 'react-router-dom'
 
 export default function Upload(){
 const [categorias,setCategorias]=useState([]);
 const [validacion,setValidacion]=useState({nombre:false,descripcion:false,categoria:false,video:false,nuevaCategoria:false});
-
+let isLogin=useSelector(state=>state.isloguin);
+let navigate=useNavigate();
 
 
 useEffect(()=>{
+if(isLogin==="false"||isLogin===false) {navigate("/")};  
 axios("/categorias")
 .then(datos=>datos.data)
 .then(datos=>setCategorias(datos));

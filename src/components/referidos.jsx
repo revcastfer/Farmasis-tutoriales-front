@@ -4,7 +4,8 @@ import RefeImagen from './imgs/referidos.jpeg'
 import RefeImagencompleta from './imgs/referidosCompleto.jpeg'
 import fondoHex from './imgs/fondoHexagonos.jpg'
 import axios from 'axios'
-
+import {useSelector} from 'react-redux';
+import {useNavigate} from 'react-router-dom'
 
 
 
@@ -74,6 +75,13 @@ width:"100%"}
 
 
   export default function Referidos(){
+
+let isLogin=useSelector(state=>state.isloguin);
+let navigate=useNavigate();
+
+  	React.useEffect(()=>{        
+if(isLogin==="false"||isLogin===false) {navigate("/")};  
+},[ isLogin,navigate])
 
 
 let readyForSend=[0,0,0,0,0,0,0]

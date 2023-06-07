@@ -120,7 +120,7 @@ let user=useSelector(state=>state.usuario);
 let handleLogout=()=>{dispatch(logout()); navigate("/") };
 
 React.useEffect(()=>{
-	if(isLogin==="false"||isLogin===false) {navigate("/")}else{ navigate("./Tutoriales") }
+	if(isLogin==="false"||isLogin===false) {navigate("/")} 
 },[isLogin,navigate])
 
 
