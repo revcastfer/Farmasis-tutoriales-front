@@ -17,7 +17,7 @@ axios("/categorias")
 .then(datos=>datos.data)
 .then(datos=>setCategorias(datos));
 
-},[]  );
+},[isLogin,navigate]  );
 
 
 let selectOnChange=(e)=>{
