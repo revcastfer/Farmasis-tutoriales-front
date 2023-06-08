@@ -50,8 +50,7 @@ width:100%;
 export default function Tutoriales(){
 let [data,setData]=React.useState([]);
 let isLogin=useSelector(state=>state.isloguin)
-let dispatch=useDispatch();
-const navigate=useNavigate()
+
 
 
 
