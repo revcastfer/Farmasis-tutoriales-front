@@ -64,8 +64,6 @@ axios("farmasistutorials")
   
 },[ isLogin,navigate])
 
-let init=async()=>{await data; dispatch(selectVideo(data[0].basico[0]))};
-init();
 
 
 let titulo=useSelector((state)=>state.titulo);
