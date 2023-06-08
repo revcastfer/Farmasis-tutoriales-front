@@ -62,7 +62,7 @@ let categoria=document.getElementById("categoria").value;
 let video=document.getElementById("video").files[0];
 let nuevaCategoria=document.getElementById("nuevaCategoria").value;
 
-
+console.log(video.filename);
 const form = new FormData();
 form.append("nombre",nombre);
 form.append("descripcion",descripcion);
