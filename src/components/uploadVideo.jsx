@@ -53,7 +53,7 @@ default: return false
 	}
 };
 
-let sendVideo=(e)=>{e.preventDefault();
+let sendVideo=async(e)=>{e.preventDefault();
 if (readyForSend()){
 
 let nombre=document.getElementById("nombre").value;
@@ -74,12 +74,10 @@ form.append("video",video);
 const datosCompletos=Object.fromEntries(form.entries());
 
 
-axios.post(axios.defaults.baseURL+'/farmasistutorials/',datosCompletos, {
-  headers: {
-    "Content-Type": "multipart/form-data"}
-  })
- .catch((err) => ("Error occured: " + err));
-alert("tutorial correctamente subido")}
+await axios.post(axios.defaults.baseURL+'/farmasistutorials/',datosCompletos, {headers: {"Content-Type": "multipart/form-data"} })
+.then(res=>alert("tutorial correctamente subido  : " + res.data))
+ .catch((err) => (console.log("Error occured: " + err)));
+}
 
 
 else{alert("verificar que todos los campos esten llenos")}
