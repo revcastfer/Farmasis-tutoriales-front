@@ -72,8 +72,8 @@ form.append("video",video);
 
 
 const datosCompletos=Object.fromEntries(form.entries());
-
-
+navigate("/Home/Tutoriales");
+alert("tutorial en carga, se notificara en cuanto termine la carga" );
 await axios.post(axios.defaults.baseURL+'/farmasistutorials/',datosCompletos, {headers: {"Content-Type": "multipart/form-data"} })
 .then(res=>{alert("tutorial correctamente subido" );console.log(res.data)})
  .catch((err) => (console.log("Error occured: " + err)));
