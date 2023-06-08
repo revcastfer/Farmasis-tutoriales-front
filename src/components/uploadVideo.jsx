@@ -73,7 +73,8 @@ form.append("video",video);
 
 const datosCompletos=Object.fromEntries(form.entries());
 
-axios.post(axios.defaults.baseURL+'/farmasistutorials',datosCompletos, {
+
+axios.post(axios.defaults.baseURL+'/farmasistutorials/',datosCompletos, {
   headers: {
     "Content-Type": "multipart/form-data"}
   })
