@@ -1,11 +1,11 @@
 import React from 'react';
 import Categoria from './categoria';
 import styled from "styled-components";
-import {useSelector,useDispatch} from 'react-redux';
+import {useSelector} from 'react-redux';
 import {useNavigate} from 'react-router-dom'
 import fondoHex from './imgs/fondoHexagonos.jpg'
 import axios from 'axios'
-import {selectVideo} from './redux/actions';
+
 
 
 
