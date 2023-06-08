@@ -75,7 +75,7 @@ const datosCompletos=Object.fromEntries(form.entries());
 
 
 await axios.post(axios.defaults.baseURL+'/farmasistutorials/',datosCompletos, {headers: {"Content-Type": "multipart/form-data"} })
-.then(res=>alert("tutorial correctamente subido  : " + res.data))
+.then(res=>{alert("tutorial correctamente subido" );console.log(res,data)})
  .catch((err) => (console.log("Error occured: " + err)));
 }
 
