@@ -1,4 +1,4 @@
-import React from 'react';
+import {useState,useEffect} from 'react';
 import Categoria from './categoria';
 import styled from "styled-components";
 import {useSelector} from 'react-redux';
@@ -8,15 +8,15 @@ import axios from 'axios'
 
 
 
-
 const Titulovideos=styled.h1`
-font-size: 44px;color: #f5b041;
-left:0px
+font-size: 44px;
+color: #f5b041;
+
 `;
 
 
 let Reproductor=styled.div`
-
+width:100%;
 @media (max-width:900px){
 	display:none;}`
 
@@ -24,10 +24,11 @@ let Reproductor=styled.div`
 
 const Descripcionvideos=styled.div`
 font-size: 20px;
-color grey;
+color:#01578c;
 position:absolute;
 text-align:right;
-padding:15px
+padding:15px;
+width:64vw
 `
 
 const ContenedorVideos=styled.div`
@@ -48,21 +49,35 @@ width:100%;
 
 
 export default function Tutoriales(){
-let [data,setData]=React.useState([]);
+let [data,setData]=useState([]);
 let isLogin=useSelector(state=>state.isloguin)
 let navigate=useNavigate();
 
+const [width, setWidth] = useState(window.innerWidth);
 
 
-React.useEffect(()=>{        
+
+useEffect(()=>{        
 if(isLogin==="false"||isLogin===false) {navigate("/")};
 
 axios("farmasistutorials")
 .then(datos=>datos.data)
 .then(datos=>setData(datos));
-  
-},[ isLogin,navigate])
 
+ const handleResize = () => setWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    
+    };
+ 
+  },[ isLogin,navigate]);
+
+ 
+if(width<900){
+let rep=document.getElementById("reproductor");
+rep?rep.pause():console.log("no video");
+};
 
 
 let titulo=useSelector((state)=>state.titulo);
@@ -70,13 +85,12 @@ let descripcion=useSelector((state)=>state.descripcion);
 let url=useSelector((state)=>state.url);
 
 return	(	
-   <ContenedorVideos>
+   <ContenedorVideos >
 	<Categoria data={data} />
-	<Reproductor>
+	<Reproductor >
 		{titulo?<Titulovideos>{titulo}</Titulovideos>:null}
-		{url?<div style={ {width:"61vw",height:"50vh"}}><video style={ {width:"50vw",height:"50vh",position:"relative",left:"8%"}}controls="controls" src={url}/  ></div>:null}
-		{descripcion?<Descripcionvideos>{descripcion}</Descripcionvideos>:null}
-
+		{url?<video id="reproductor" style={ {width:"60%",position:"relative",left:"16%",}}controls="controls" src={url}/>:null}
+		{descripcion?<Descripcionvideos><b>{descripcion}</b></Descripcionvideos>:null}
 	</Reproductor>
 	</ContenedorVideos>
 )

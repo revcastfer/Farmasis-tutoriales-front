@@ -1,15 +1,16 @@
-import {useDispatch} from 'react-redux';
+import {useDispatch,useSelector} from 'react-redux';
 import {selectVideo} from './redux/actions';
 import {useState} from "react";
 import styled from "styled-components";
-import axios from 'axios'
+import axios from 'axios';
+import {useNavigate} from "react-router-dom"
+import {playerChange} from "./redux/actions"
 
 
 //videos debajo titulo a menos de 900px
 const VideoDiv=styled.div`
 display:block;
-width: 100%;
-
+position:relative;
 @media (min-width:900px){
 	display:none;
 }
@@ -18,7 +19,7 @@ width: 100%;
 //menu a mas de 900px
 const MenuStyle=styled.li`
 display:flex;
-font-size:24px;
+font-size:20px;
 color:grey;
 padding:5px;
 cursor: pointer;
@@ -27,18 +28,37 @@ cursor: pointer;
 }
 
  `
-//menu a menos de 900px
+//menu a menos de 900-500px
 const MenuStyle2=styled.li`
 
 display:flex;
-font-size:40px;
-margin:20px;
+font-size:25px;
 color:grey;
 cursor: default;
+width:100vw;
+padding:0px 0px 10px 15px;
+
+@media (max-width:500px){
+    font-size:12px}
 @media screen and (min-width:900px){
-	display:none}
+	display:none
+}
 
  `
+
+const VideoLink=styled.video`
+width:100vw;
+
+`;
+
+const Descripcion=styled.div`
+font-size:8px;
+color:red;
+width:80%;
+text-align:center;
+@media (min-width:500px){
+    font-size:13px}
+`;
 
 
 
@@ -47,9 +67,10 @@ export default function Titulo(props){
 
 
 let [videoSelected,setVideoSelected]=useState("")
-let dispatch=useDispatch();	
-let nameObjs=[];
-for (let obj in props.objeto){nameObjs.push(props.objeto[obj].name)};
+let dispatch=useDispatch();
+let navigate=useNavigate();
+const  player=useSelector(state=>state.player);
+
 
 
 
@@ -70,10 +91,14 @@ for (let i = 0; i < collection.length; i++) {
  selected.color="orange";
  selected.fontWeight='bold' }
 
-let onPlayVideo=(e)=>{ 
-	if(videoSelected===""){ setVideoSelected(e.target.id)}
-	else{document.getElementById(videoSelected).pause();setVideoSelected( e.target.id)}
 
+let onClick=(e)=>{
+	let videoName=e.target.id;
+	let videoUrl= e.target.src.split("/")[4];
+	dispatch(playerChange("true"));
+	navigate("/player/"+videoName+"/"+videoUrl)
+	//console.log(document.getElementById(e.target.id));
+	
 
 }
 
@@ -81,12 +106,16 @@ let onPlayVideo=(e)=>{
 
 	return(
 		<div >
-		{  nameObjs.map(  name=><div key={name}>
+		{  props.objeto.map(  ele=><div key={ele.name}>
 
-			<MenuStyle id={name} className="null" onClick={()=>handleClick(name)} > {name} </MenuStyle>
-			<MenuStyle2 id={name} className="null" > {name} </MenuStyle2>
-			<VideoDiv> <video id={"Video"+name} onPlay={onPlayVideo} style={ {height:"48vh",width:"85vw"}} controls="controls" src={axios.defaults.baseURL+search(name).video}/></VideoDiv> 
-
+			<MenuStyle id={ele.name}  className="null" onClick={()=>handleClick(ele.name)} > {ele.name} </MenuStyle>
+			<VideoDiv> 
+			  <VideoLink style={{width:"100vw",maxWidth:player?"350px":null}} id={ele.name} onClick={onClick}  src={axios.defaults.baseURL+search(ele.name).video}/>
+			</VideoDiv> 
+            <MenuStyle2 id={ele.name}   className="null" > {ele.name} 
+                         <div style={{display:player==="true"?"none":"flex",justifyContent:"center"}}>
+                        <Descripcion >{ele.descrip}</Descripcion> </div>
+            </MenuStyle2>
 			</div>  )  }
 	   </div>)
 

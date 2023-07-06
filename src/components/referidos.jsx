@@ -10,14 +10,26 @@ import {useNavigate} from 'react-router-dom'
 
 
 
-const ErrorValidacion=styled.span`color:red;font-size:13px;display:inline;visibility:hidden`;
+const ErrorValidacion=styled.span`
+color:red;
+font-size:13px;
+display:inline;
+visibility:hidden;
+@media (max-width:700px){
+font-size:8px;
+}`;
 
 
 const Formulario=styled.form`
 width:50%;
 position:relative;
 background-image:url(${fondoHex});
-background-size:contain`;
+background-size:contain;
+@media (max-width:700px){
+width:100%;
+`
+;
+
 
 const ImputsReferidos=styled.input`
 display:inline;
@@ -25,7 +37,14 @@ margin:15px;
 height:30px;
 width:50%;
 border-radius:10px;
-border: 1px solid grey`;
+border: 1px solid grey;
+@media (max-width:700px){
+height:20px;
+font-size:10px;
+margin:10px;
+}
+`;
+
 
 const TipoDatos=styled.div`
 color:#09b5c1;
@@ -60,7 +79,9 @@ justify-content:center;
 background-image:url(${RefeImagencompleta});
 @media (max-width:900px){
 background-image:url(${RefeImagen});
-right:0px}
+right:0px};
+@media (max-width:700px){
+display:none
 `
 
 const formCentrar={position:"absolute",left:"8%", top:"7%",
@@ -175,9 +196,9 @@ return(
 
 		</Formulario>
 
-		<ImagenesDerecha>
+		<ImagenesDerecha/>
 		
-		</ImagenesDerecha>
+		
 
 
 

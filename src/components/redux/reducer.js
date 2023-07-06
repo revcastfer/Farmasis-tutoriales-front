@@ -7,7 +7,7 @@ let localUser=window.localStorage.getItem("usuario");
 
 
 const initialState= {isloguin:localIsLogin,usuario:localUser,titulo:"",
-descripcion:"",url:""}; 
+descripcion:"",url:"",player:false}; 
 
 export default function reducer(state= initialState,action){
 	switch(action.type){
@@ -25,9 +25,14 @@ export default function reducer(state= initialState,action){
 	         return {...state,isloguin:false,usuario:null};
 
 	   case 'select':
+
 	   	    return{...state,titulo:action.payload.name,
 	   	          descripcion:action.payload.descrip,
 	   	                          url:axios.defaults.baseURL+action.payload.video}
+
+	   case 'player':
+
+	   	    return {...state,player:action.payload}
 
 
 

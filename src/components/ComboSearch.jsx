@@ -1,16 +1,17 @@
 import React from 'react';
-import Select from 'react-select';
+import styled from "styled-components";
 
 
+const Select=styled.select`
+width:75%;
+height:32px;
+border-radius:8px;
+border:1px solid green
 
-const demo=[
-	{label:"farmacia1",value:"farmacia1"},
-	{label:"farmacia2",value:"farmacia2"},
-	{label:"farmacia3",value:"farmacia3"},
-	{label:"farmacia4",value:"farmacia4"},
-	{label:"farmacia5",value:"farmacia5"},
-	{label:"farmacia6",value:"farmacia6"},
-	{label:"farmacia7",value:"farmacia7"}
+`
+const users=[
+	{label:"CFC SYSTEMS",value:"Cesarin"},
+	{label:"Administrador",value:"administrador"},
 	];
 
 
@@ -22,10 +23,11 @@ const demo=[
 export default function ComboSearch(){
 
 
-return(<div >
-	<Select  defaultValue={{label:"---seleccionar---", value:"null"}}
-	options ={demo} 
-	 />
+return(<div  style={{display:"flex",justifyContent:"center"}} >
+
+	<Select id="user"  defaultValue={{label:"--seleccionar--", value:"null"}}>
+      {users.map(ele=><option key={ele.value} value={ele.value}>{ele.label}</option>)}
+	</Select>
 
 
 
