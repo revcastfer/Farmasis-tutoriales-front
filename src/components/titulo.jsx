@@ -1,6 +1,5 @@
 import {useDispatch,useSelector} from 'react-redux';
 import {selectVideo} from './redux/actions';
-import {useState} from "react";
 import styled from "styled-components";
 import axios from 'axios';
 import {useNavigate} from "react-router-dom"
@@ -65,8 +64,6 @@ text-align:center;
 
 export default function Titulo(props){
 
-
-let [videoSelected,setVideoSelected]=useState("")
 let dispatch=useDispatch();
 let navigate=useNavigate();
 const  player=useSelector(state=>state.player);
@@ -97,7 +94,6 @@ let onClick=(e)=>{
 	let videoUrl= e.target.src.split("/")[4];
 	dispatch(playerChange("true"));
 	navigate("/player/"+videoName+"/"+videoUrl)
-	//console.log(document.getElementById(e.target.id));
 	
 
 }

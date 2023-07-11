@@ -82,7 +82,7 @@ const navigate=useNavigate();
 let dispatch=useDispatch();
 let isLogin=""+useSelector(state=>state.isloguin);
 
-React.useEffect(()=>{ if(isLogin==="true" ){ navigate("./Home/Tutoriales")}},[isLogin,navigate])
+React.useEffect(()=>{ if(isLogin==="true" ){ navigate("./Home/Tutoriales")}},[isLogin,navigate]);
 
 let validateUser=async(name,password)=>{
 	try{
@@ -97,7 +97,6 @@ catch(err){return err.response.data}
 
 let handleSubmit=async(e)=>{
 e.preventDefault();
-
 let user=document.getElementById("user").value;
 let password=document.getElementById("password").value;
 let validate=await validateUser(user,password);

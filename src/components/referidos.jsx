@@ -21,7 +21,7 @@ font-size:8px;
 
 
 const Formulario=styled.form`
-width:50%;
+width:50vw;
 position:relative;
 background-image:url(${fondoHex});
 background-size:contain;

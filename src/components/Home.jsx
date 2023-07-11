@@ -91,7 +91,7 @@ top:5px
 const Logout=styled.div`
 position: absolute;
 right:81px;
-top:40px;
+top:30px;
 color:red;
 font-size:25px;
 font-weight:bold;
