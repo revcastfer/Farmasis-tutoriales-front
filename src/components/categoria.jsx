@@ -7,7 +7,6 @@ import {useSelector} from 'react-redux';
 const IndiceStyle=styled.div`
 overflow-y:auto;
 &::-webkit-scrollbar{background-color:white;width:3px};
-
 ::-webkit-scrollbar-thumb{background:#01578c;border-radius:25px};
 ::-webkit-scrollbar:horizontal{display:none}
 
@@ -29,7 +28,7 @@ let player=""+useSelector(state=>state.player);
 
 return(
 
-<IndiceStyle style={{height:player==="true"?"400px":"678px"}}>{props.data.map( grupo=><Lista  lista={grupo} /> )}</IndiceStyle>
+<IndiceStyle style={{height:player==="true"?"400px":"610px"}}>{props.data.map( grupo=><Lista  lista={grupo} /> )}</IndiceStyle>
 
 	)
 

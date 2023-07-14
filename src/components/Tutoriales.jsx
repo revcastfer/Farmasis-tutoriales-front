@@ -5,6 +5,7 @@ import {useSelector} from 'react-redux';
 import {useNavigate} from 'react-router-dom'
 import fondoHex from './imgs/fondoHexagonos.jpg'
 import axios from 'axios'
+import compartir from "./imgs/compartir.png"
 
 
 
@@ -41,6 +42,11 @@ width:100%;
 	background-size:contain;
 }
 `
+const Compartir=styled.img`
+height:55px;
+position:relative;
+`;
+
 
 
 
@@ -89,7 +95,10 @@ return	(
 	<Categoria data={data} />
 	<Reproductor >
 		{titulo?<Titulovideos>{titulo}</Titulovideos>:null}
-		{url?<video id="reproductor" style={ {width:"60%",position:"relative",left:"16%",}}controls="controls" src={url}/>:null}
+		{url?<div style={{display:"flex",alignItems: "baseline",position:"relative",left:"16%",}}>
+		       <video id="reproductor" style={ {width:"60%",position:"relative"}}controls="controls" src={url}/>
+             <Compartir src={compartir} />
+           </div>:null}
 		{descripcion?<Descripcionvideos><b>{descripcion}</b></Descripcionvideos>:null}
 	</Reproductor>
 	</ContenedorVideos>
